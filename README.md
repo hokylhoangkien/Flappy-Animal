@@ -43,4 +43,10 @@ Trò chơi được thiết kế lại toàn diện với giao diện hiện đ�
 
 ---
 
+## Lưu ý:
+
+- Chỉ nên chơi trên laptop, vì chơi trên các thiết bị khác sẽ có dấu hiệu giật lag. Xin cảm ơn.
+
+---
+
 > 🎨 _Flappy Animal – một trò chơi nhỏ, nhưng chứa đầy năng lượng, màu sắc và niềm vui!_
