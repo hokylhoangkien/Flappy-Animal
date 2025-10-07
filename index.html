@@ -4,17 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Flappy Animal</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#a2d2ff" />
+
     <script>
+      // 🔹 Đăng ký Service Worker
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("sw.js")
-          .then(() => console.log("Service Worker registered"))
-          .catch((err) => console.log("Service Worker failed:", err));
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then(() => console.log("✅ Service Worker registered"))
+            .catch((err) => console.log("❌ SW failed:", err));
+        });
       }
+
+      // 🔹 Biến lưu sự kiện cài đặt
+      let deferredPrompt;
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        const installBtn = document.getElementById("installBtn");
+        installBtn.style.display = "inline-block";
+
+        installBtn.addEventListener("click", async () => {
+          installBtn.style.display = "none";
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log("User response to install:", outcome);
+          deferredPrompt = null;
+        });
+      });
+
+      // 🔹 Nếu app đã được cài
+      window.addEventListener("appinstalled", () => {
+        console.log("✅ App installed successfully");
+      });
     </script>
   </head>
+
   <body>
     <div class="topbar">
       <div class="brand">Flappy <span class="accent">Animal</span></div>
@@ -41,6 +70,17 @@
       </div>
     </main>
 
+    <!-- 🔹 Nút Cài đặt ứng dụng -->
+    <div style="text-align: center; margin: 20px">
+      <button
+        id="installBtn"
+        class="btn"
+        style="display: none; background: #fcbf49; color: #000"
+      >
+        📲 Cài đặt ứng dụng
+      </button>
+    </div>
+
     <!-- Shop modal -->
     <div id="shopModal" class="modal hidden" role="dialog" aria-modal="true">
       <div class="modal-card">
@@ -57,6 +97,7 @@
     <audio id="sfxScore" src="" preload="auto"></audio>
     <audio id="sfxHit" src="audio/hit.mp3" preload="auto"></audio>
     <audio id="bgMusic" src="audio/background.mp3" preload="auto" loop></audio>
+
     <footer class="credit">Made with ❤️ by <span>Phan Hoàng Kiên</span></footer>
 
     <script src="game.js"></script>
