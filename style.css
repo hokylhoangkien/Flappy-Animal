@@ -1,0 +1,228 @@
+:root {
+  --bg-top: #0f172a;
+  --bg-bottom: #071033;
+  --glass: rgba(255, 255, 255, 0.06);
+  --accent: #00e0a8;
+  --card: rgba(255, 255, 255, 0.04);
+  --muted: #9aa4b2;
+  --pill: #0ea5a8;
+}
+
+/* Reset & layout */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, system-ui, -apple-system;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  color: #e6eef6;
+  padding: 18px;
+}
+
+/* Top bar */
+.topbar {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+}
+.brand .accent {
+  color: var(--accent);
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+}
+.scorewrap {
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+/* Game area */
+.game-wrap {
+  width: 420px;
+  max-width: 92vw;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.5);
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 224, 168, 0.15) 0px,
+    rgba(0, 224, 168, 0.5) 2px,
+    transparent 2px,
+    transparent 30px
+  );
+  background-size: 300px 100%;
+  animation: neonColumns 3s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.4);
+}
+
+@keyframes neonColumns {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+/* overlay message */
+.overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25));
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+/* Modal shop */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.6));
+  z-index: 1000;
+}
+.hidden {
+  display: none;
+}
+.modal-card {
+  width: 92%;
+  max-width: 640px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.modal-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.modal-card h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+.duck-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 8px;
+}
+.duck-item {
+  width: 140px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: transform 0.16s, box-shadow 0.16s;
+}
+.duck-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.45);
+}
+.duck-item.selected {
+  outline: 2px solid var(--accent);
+  box-shadow: 0 12px 28px rgba(0, 224, 168, 0.06);
+}
+
+.duck-item img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}
+.duck-item p {
+  margin: 8px 0 0 0;
+  font-weight: 700;
+}
+
+/* small screens */
+@media (max-width: 520px) {
+  .duck-item {
+    width: 48%;
+  }
+  .brand {
+    font-size: 16px;
+  }
+}
+.credit {
+  position: fixed;
+  bottom: 6px;
+  right: 10px;
+  font-size: 13px;
+  color: #9aa4b2;
+  opacity: 0.8;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
+}
+.credit span {
+  color: var(--accent);
+  font-weight: 600;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Flappy Animal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="brand">Flappy <span class="accent">Animal</span></div>
+      <div class="controls">
+        <button id="shopBtn" class="btn">Shop Động vật</button>
+        <button id="muteBtn" class="btn">Tắt nhạc</button>
+        <button id="restartBtn" class="btn">Restart</button>
+        <div class="scorewrap">
+          Score: <span id="score">0</span> | Highscore:
+          <span id="highscore">0</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="game-wrap">
+      <canvas
+        id="canvas"
+        width="420"
+        height="640"
+        aria-label="Flappy Duck game"
+      ></canvas>
+      <div id="overlayMsg" class="overlay">
+        Nhấn <b>Space</b> hoặc <b>Click</b> để bắt đầu
+      </div>
+    </main>
+
+    <!-- Shop modal -->
+    <div id="shopModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <header>
+          <h2>Chọn động vật</h2>
+          <button id="closeShop" class="icon-btn">✕</button>
+        </header>
+        <section class="duck-grid" id="duckList"></section>
+      </div>
+    </div>
+
+    <!-- Âm thanh -->
+    <audio id="sfxFlap" src="audio/flap.mp3"></audio>
+    <audio id="sfxScore" src="" preload="auto"></audio>
+    <audio id="sfxHit" src="audio/hit.mp3" preload="auto"></audio>
+    <audio id="bgMusic" src="audio/background.mp3" preload="auto" loop></audio>
+    <footer class="credit">Made with ❤️ by <span>Phan Hoàng Kiên</span></footer>
+
+    <script src="game.js"></script>
+  </body>
+</html>
