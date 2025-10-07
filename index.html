@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Flappy Animal</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("Service Worker registered"))
+          .catch((err) => console.log("Service Worker failed:", err));
+      }
+    </script>
   </head>
   <body>
     <div class="topbar">
