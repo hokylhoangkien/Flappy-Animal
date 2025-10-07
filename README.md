@@ -3,7 +3,7 @@
 **Flappy Animal** là một phiên bản dễ thương và sinh động của trò chơi huyền thoại _Flappy Bird_, nơi bạn điều khiển những **con vật hoạt hình đáng yêu** như 🐼 Gấu trúc, 🐷 Heo, 🐱 Mèo, 🦆 Vịt, 🐶 Chó, 🐹 Capybara, 🐰 Doraemon, v.v.  
 Trò chơi được thiết kế lại toàn diện với giao diện hiện đại, hiệu ứng neon mượt mà và âm thanh vui nhộn.
 
-🎮 **Chơi ngay tại:** 👉 [Flappy Animal Demo](https://flappyanimal.netlify.app)
+🎮 **Chơi ngay tại:** 👉 [Flappy Animal Demo](https://hokylhoangkien.github.io/Flappy-Animal/)
 
 ---
 
@@ -32,7 +32,6 @@ Trò chơi được thiết kế lại toàn diện với giao diện hiện đ�
 - **CSS3** – tạo hiệu ứng nền động, giao diện shop và menu.
 - **JavaScript (Vanilla)** – quản lý logic game, hoạt ảnh, âm thanh và tương tác.
 - **LocalStorage** – lưu điểm cao.
-- **Netlify** – triển khai bản chơi online.
 
 ---
 
